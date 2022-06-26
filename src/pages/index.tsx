@@ -1,13 +1,11 @@
 import type { NextPage } from "next";
-import { Navbar } from "@components/Interface";
-import { Banner } from "@components/Interface";
+import { ListNFT } from "@components/Functions/ListNFT";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Navbar />
-      <Banner />
-    </div>
+    <>
+      <ListNFT />
+    </>
   );
 };
 
