@@ -1,0 +1,26 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "AbstractRoyalties",
+  "sourceName": "contracts/royalties/RoyaltiesBase.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "MissingRecipient",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "RoyaltiesCantBeZero",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "RoyaltyOverflow",
+      "type": "error"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
