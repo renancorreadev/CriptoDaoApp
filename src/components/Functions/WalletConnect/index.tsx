@@ -1,16 +1,16 @@
-import { useWeb3React } from '@web3-react/core';
-import { UserRejectedRequestError } from '@web3-react/injected-connector';
-import e from 'express';
-import { useEffect, useState } from 'react';
-import { injected } from '../../../utils/connectors';
-import useENSName from '../../../hooks/useENSName';
-import useMetaMaskOnboarding from '../../../hooks/useMetaMaskOnboarding';
-import { formatEtherscanLink, shortenHex } from '../../../utils/util';
-import { MetamaskButton } from '../../Reusables/MetamaskButton';
+import { useWeb3React } from "@web3-react/core";
+import { UserRejectedRequestError } from "@web3-react/injected-connector";
+import { useEffect, useState } from "react";
+import { injected } from "../../../utils/connectors";
+import useENSName from "../../../hooks/useENSName";
+import useMetaMaskOnboarding from "../../../hooks/useMetaMaskOnboarding";
+import { formatEtherscanLink, shortenHex } from "../../../utils/util";
+import { MetamaskButton } from "../../Reusables/MetamaskButton";
 
-import styles from './styles.module.scss';
-
-export const WalletConnect = () => {
+type WalletConnectProps = {
+  className?: string;
+};
+export const WalletConnect = ({ className }: WalletConnectProps) => {
   const { active, error, activate, chainId, account, setError } =
     useWeb3React();
 
@@ -23,7 +23,7 @@ export const WalletConnect = () => {
 
   // manage connecting state for injected connector
   const [connecting, setConnecting] = useState(false);
-  const [metamaskInstalled, setMetamaskInstalled] = useState('');
+  const [metamaskInstalled, setMetamaskInstalled] = useState("");
 
   useEffect(() => {
     if (active || error) {
@@ -48,21 +48,25 @@ export const WalletConnect = () => {
 
   useEffect(() => {
     if (isMetaMaskInstalled) {
-      setMetamaskInstalled('Connect to MetaMask');
+      setMetamaskInstalled("Connect to MetaMask");
     } else {
-      setMetamaskInstalled('Install MetaMask');
+      setMetamaskInstalled("Install MetaMask");
     }
   }, [isMetaMaskInstalled]);
 
-  if (typeof account !== 'string') {
+  if (typeof account !== "string") {
     return (
       <>
         {isWeb3Available ? (
-          <MetamaskButton disabled={connecting} onClick={statusConnect}>
+          <MetamaskButton
+            className={className}
+            disabled={connecting}
+            onClick={statusConnect}
+          >
             {metamaskInstalled}
           </MetamaskButton>
         ) : (
-          <MetamaskButton onClick={startOnboarding}>
+          <MetamaskButton className={className} onClick={startOnboarding}>
             {metamaskInstalled}
           </MetamaskButton>
         )}
@@ -72,25 +76,14 @@ export const WalletConnect = () => {
 
   return (
     <a
-      style={{
-        fontFamily: 'Rubik',
-        width: '157px',
-        height: '40px',
-        backgroundColor: '#9600bc',
-        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-        borderRadius: '4px',
-        color: 'white',
-        marginRight: '85px',
-      }}
+      className="text-white font-confortaa "
       {...{
-        href: formatEtherscanLink('Account', [chainId, account]),
-        target: '_blank',
-        rel: 'noopener noreferrer',
+        href: formatEtherscanLink("Account", [chainId, account]),
+        target: "_blank",
+        rel: "noopener noreferrer",
       }}
     >
-      <span className={styles.connectText}>
-        {ENSName || `${shortenHex(account, 4)}`}
-      </span>
+      <span className="">{ENSName || `${shortenHex(account, 4)}`}</span>
     </a>
   );
 };

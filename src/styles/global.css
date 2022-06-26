@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.banner {
+  background: url("/images/banner.png") no-repeat,
+    linear-gradient(
+      90deg,
+      rgba(157, 84, 251, 10.8) 100%,
+      rgba(150, 0, 188, 0.8) 104.04%
+    );
+  mix-blend-mode: normal;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  width: 100%;
+}
