@@ -14,11 +14,12 @@ export default function useContract<T extends Contract = Contract>(
     }
 
     try {
-      return new Contract(address, ABI, library.getSigner(account));
+      return new Contract(address, ABI);
     } catch (error) {
       console.error("Failed To Get Contract", error);
 
       return null;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address, ABI, library, account]) as T;
 }

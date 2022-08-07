@@ -1,55 +1,58 @@
-import { IconPR, IconUser } from "@/components/Icons";
-import { Logo } from "@icons/Logo";
+import { Logo } from "../../Icons/Logo";
+import React from "react";
+import { WalletConnect } from "@reusables/WalletConnect";
+import { styled } from "@stitches/react";
+import { ETHBalance } from "@components/Functions/";
+
+// Component to Renderize
+const HeaderContainer = styled("header", {
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  background: "linear-gradient(to right, #f6f6f6, #fff)",
+});
+
+const NavBar = styled("nav", {
+  height: "5rem",
+  display: "flex",
+  alignItems: "center",
+});
+
+const LinkAnchors = styled("a", {
+  marginLeft: "5rem",
+
+  "&:hover": {
+    color: "#9600bc",
+  },
+  "&:active": {
+    color: "#460456",
+    fontWeight: "bold",
+  },
+  "&:active:after": {
+    content: "",
+    height: "3px",
+    borderRadius: "3px 3px 0 0",
+    width: "100%",
+    position: "absolute",
+    bottom: "1px",
+    left: "0",
+    background: "var(--yellow-500)",
+  },
+});
 
 export function Navbar() {
   return (
-    <header className="">
-      <div className="flex justify-between align-center ml-[2.5rem] mr-[2.5rem] mt-[15px] mb-[21px]">
-        <div className="">
-          <Logo />
-        </div>
-        <nav className="pl-4 pr-4 flex ">
-          <a
-            className="text-purple-400 px-[18px] hover:text-purple-300 "
-            href="#"
-          >
-            Projetos e comunidades
-          </a>
-          <a
-            className="text-purple-400 px-[18px] hover:text-purple-300 flex "
-            href="#"
-          >
-            <div className="mr-2 pb-2">
-              <IconPR />
-            </div>
-            Explore
-          </a>
-          <a
-            className="text-purple-400 px-[18px] hover:text-purple-300 flex selection:"
-            href="#"
-          >
-            <div className="mr-2 pb-2">
-              <IconUser />
-            </div>
-            Artistas
-          </a>
-          <a
-            className="text-purple-400 px-[18px] hover:text-purple-300"
-            href="#"
-          >
-            Sobre
-          </a>
-          <a
-            className="text-purple-400 px-[18px] hover:text-purple-300"
-            href="#"
-          >
-            Dashboard
-          </a>
-        </nav>
-        <button className="bg-purple-400 w-[149px] h-[28px]">
-          <span className="text-gray-900 text-base">Invista em nós</span>
-        </button>
-      </div>
-    </header>
+    <HeaderContainer>
+      <Logo />
+      <NavBar>
+        <LinkAnchors href="#">Explorer</LinkAnchors>
+        <LinkAnchors href="#">Read me</LinkAnchors>
+        <LinkAnchors href="#">About</LinkAnchors>
+        <LinkAnchors href="#">Web3Club</LinkAnchors>
+      </NavBar>
+      <ETHBalance />
+
+      <WalletConnect />
+    </HeaderContainer>
   );
 }

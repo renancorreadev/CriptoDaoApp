@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { BigNumberish } from "@ethersproject/bignumber";
 import { formatUnits } from "@ethersproject/units";
 
@@ -17,15 +18,17 @@ const ETHERSCAN_PREFIXES = {
 
 export function formatEtherscanLink(
   type: "Account" | "Transaction",
-  data: [number, string]
+  data: [number, string, undefined]
 ) {
   switch (type) {
     case "Account": {
       const [chainId, address] = data;
+      //@ts-ignore
       return `https://${ETHERSCAN_PREFIXES[chainId]}etherscan.io/address/${address}`;
     }
     case "Transaction": {
       const [chainId, hash] = data;
+      //@ts-ignore
       return `https://${ETHERSCAN_PREFIXES[chainId]}etherscan.io/tx/${hash}`;
     }
   }

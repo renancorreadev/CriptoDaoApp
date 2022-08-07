@@ -1,1 +1,2 @@
-export * from "./MetamaskButton";
+export * from "./WalletConnect";
+export * from "./Button";

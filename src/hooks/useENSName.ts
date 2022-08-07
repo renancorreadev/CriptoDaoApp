@@ -17,7 +17,11 @@ export default function useENSName(address: string) {
             setENSName(name);
           }
         })
-        .catch(() => {});
+        .catch(() => {
+          if (!stale) {
+            setENSName("");
+          }
+        });
 
       return () => {
         stale = true;

@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "experimentalDecorators": true,
+    "target": "ES5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": ["cypress"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
@@ -24,10 +23,17 @@
       "@interfaces/*": ["src/interfaces/*"],
       "@contracts/*": ["src/contracts/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@reusables/*": ["src/components/Reusables/*"],
-      "@icons/*": ["src/components/Icons/*"]
-    }
+      "@reusables/*": ["src/components/Reusables/*"]
+    },
+    "skipLibCheck": true,
+    "noEmit": true,
+    "module": "esnext"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typedocOptions": {
+    "entryPoints": ["src/"],
+    "exclude": ["**/src/pages/**/*.ts", "**/src/pages/**/*.tsx"],
+    "out": "docs"
+  }
 }
